@@ -6,39 +6,38 @@ public class nomor5 {
             return false; 
         }
 
-        boolean hasUpperCase = false; // Untuk huruf besar
-        boolean hasLowerCase = false; // Untuk huruf kecil
-        boolean hasDigit = false;      // Untuk angka
+        boolean uppercase = false; // huruf besar
+        boolean lowercase = false; // huruf kecil
+        boolean digit = false;      // angka
 
-        // Memeriksa setiap karakter dalam password
         for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i); 
 
             if (Character.isUpperCase(c)) {
-                hasUpperCase = true;
+                uppercase = true;
             }
             else if (Character.isLowerCase(c)) {
-                hasLowerCase = true;
+                lowercase = true;
             }
             else if (Character.isDigit(c)) {
-                hasDigit = true;
+                digit = true;
             }
         }
 
-        return hasUpperCase && hasLowerCase && hasDigit;
+        return uppercase && lowercase && digit;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Masukkan password: ");
-        String password = scanner.nextLine(); // Membaca input password dari pengguna
+        String password = scanner.nextLine(); 
 
-        // Memvalidasi password
+        // Valid
         if (isValidPassword(password)) {
-            System.out.println("Password valid"); // Jika valid
+            System.out.println("Password valid");
         } else {
-            System.out.println("Password tidak valid"); // Jika tidak valid
+            System.out.println("Password tidak valid"); 
         }
 
         scanner.close();

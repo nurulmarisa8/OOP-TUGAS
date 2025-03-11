@@ -19,9 +19,7 @@ public class nomor3 {
             System.out.println("Format Salah ! Gunakan dd-mm-yy");
         }
 
-
         scanner.close();
-
 
     }
     

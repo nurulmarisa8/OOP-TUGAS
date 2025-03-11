@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class nomor2 {
     public static void main(String[] args) {
-        int[][] nums = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[][] angka = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -10,9 +10,9 @@ public class nomor2 {
             int cari = scanner.nextInt();
             boolean ditemukan = false;
 
-            for (int x = 0; x < nums.length; x++) {
-                for (int y = 0; y < nums[x].length; y++) {
-                    if (nums[x][y] == cari) {
+            for (int x = 0; x < angka.length; x++) {
+                for (int y = 0; y < angka[x].length; y++) {
+                    if (angka[x][y] == cari) {
                         System.out.println("Found " + cari + " at [" + x + "][" + y + "]");
                         ditemukan = true;
                         break;
