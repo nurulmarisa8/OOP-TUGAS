@@ -8,7 +8,7 @@ public class nomor2 {
         try {
             System.out.print("Masukkan angka yang ingin dicari: ");
             int cari = scanner.nextInt();
-            boolean ditemukan = false;
+            boolean ditemukan = false;                  
 
             for (int x = 0; x < angka.length; x++) {
                 for (int y = 0; y < angka[x].length; y++) {
