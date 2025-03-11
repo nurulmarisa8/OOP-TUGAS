@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class nomor4 {
-    public static int faktorial(int n) {
+    public static long faktorial(long n) {
         if (n == 0 || n == 1) { 
             return 1;
         } else {
@@ -12,10 +12,10 @@ public class nomor4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Masukkan bilangan n: ");
-        int n = scanner.nextInt(); 
+        long n = scanner.nextInt(); 
 
 
-        int hasil = faktorial(n);
+        long hasil = faktorial(n);
         
         System.out.println("Faktorial dari " + n + " adalah: " + hasil);
         
