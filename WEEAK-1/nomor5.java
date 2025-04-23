@@ -31,7 +31,7 @@ public class nomor5 {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Masukkan password: ");
-        String password = scanner.nextLine(); 
+        String password = scanner.nextLine();
 
         // Valid
         if (isValidPassword(password)) {

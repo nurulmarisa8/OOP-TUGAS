@@ -16,7 +16,7 @@ public class nomor1 {
             result += word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase() + " ";
         }
         
-        System.out.println(result);
+        System.out.println(result.trim());
         
         scanner.close();
 

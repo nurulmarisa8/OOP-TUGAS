@@ -2,7 +2,7 @@ class Alamat {
     String jalan;
     String kota;
 
-    String getAlamat() {
+    public String getAlamatLengkap() {
         return jalan + ", " + kota;
     }
 }
@@ -12,20 +12,20 @@ class Mahasiswa {
     String nim;
     Alamat alamat;
 
-    String getNama() {
+    public String getNama() {
         return nama;
     }
 
-    String getNim() {
+    public String getNim() {
         return nim;
     }
 
-    String getAlamat() {
-        return alamat.getAlamat();
+    public String getAlamat() {
+        return alamat.getAlamatLengkap();
     }
 }
 
-public class nomor4 {
+public class nomor4{
     public static void main(String[] args) {
         Alamat alamat = new Alamat();
         alamat.jalan = "Tamalanrea Indah";
@@ -33,11 +33,11 @@ public class nomor4 {
 
         Mahasiswa mahasiswa = new Mahasiswa();
         mahasiswa.alamat = alamat;
-        mahasiswa.nama = "Farhan";
-        mahasiswa.nim = "H071231025";
+        mahasiswa.nama = "Nurul";
+        mahasiswa.nim = "H071241015";
 
-        System.out.println("Nama: " + mahasiswa.getNama());
-        System.out.println("Nim: " + mahasiswa.getNim());
-        System.out.println("Alamat: " + mahasiswa.getAlamat());
+        System.out.println("Nama: "+ mahasiswa.getNama());
+        System.out.println("NIM: "+ mahasiswa.getNim());
+        System.out.println("Alamat: "+ mahasiswa.getAlamat());
     }
 }

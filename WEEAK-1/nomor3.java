@@ -8,19 +8,16 @@ public class nomor3 {
         String input = scanner.nextLine();
 
         try {
-            DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("dd-MM-yy");
+            DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate tanggal = LocalDate.parse(input, inputFormat);
-
 
             DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("d MMMM yyyy");
             System.out.println(tanggal.format(outputFormat));
 
         } catch (Exception e) {
-            System.out.println("Format Salah ! Gunakan dd-mm-yy");
+            System.out.println("Format Salah! Gunakan dd-MM-yyyy");
         }
 
         scanner.close();
-
     }
-    
 }
