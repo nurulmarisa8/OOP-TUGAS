@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import login_app.models.Profile;
+import login_app.models.Peripheral;
 import login_app.models.User;
 import login_app.utils.StringUtils;
 
@@ -54,6 +55,8 @@ public class Main {
         System.out.print("> ");
         String username = sc.nextLine();
 
+        // ============================
+
         int userIndex = -1;
         for (int i = 0; i < listUser.size(); i++) {
             if (listUser.get(i).getUsername().equals(username)) {
@@ -62,16 +65,44 @@ public class Main {
             }
         }
 
+         // ============================
+
         if (userIndex != -1) {
             System.out.println("Password");
             System.out.print("> ");
             String password = sc.nextLine();
 
+             // ============================
+
             boolean isPasswordMatch = listUser.get(userIndex).getPassword().equals(password);
+
+             // ============================
+
+              // ============================
 
             if (isPasswordMatch) {
                 System.out.println("Berhasil Login!");
-                showDetailUser(listUserProfile.get(userIndex));
+                Profile currentProfile = listUserProfile.get(userIndex);
+                showDetailUser(currentProfile);
+
+                // Fitur tambah peripheral
+                System.out.println("Ingin menambahkan peripheral? (y/n)");
+                System.out.print("> ");
+                String tambahPeripheral = sc.nextLine();
+
+                while (tambahPeripheral.equalsIgnoreCase("y")) {
+                    System.out.println("Masukkan nama peripheral (misal: Keyboard, Mouse, Monitor):");
+                    System.out.print("> ");
+                    String peripheralName = sc.nextLine();
+                    currentProfile.addPeripheral(new Peripheral(peripheralName));
+
+                    System.out.println("Tambah lagi? (y/n)");
+                    System.out.print("> ");
+                    tambahPeripheral = sc.nextLine();
+                }
+// ===============================
+                // Tampilkan ulang profil
+                showDetailUser(currentProfile);
 
                 System.out.println("1. Logout");
                 System.out.println("2. Keluar");
@@ -92,6 +123,8 @@ public class Main {
             System.out.println("Username tidak ditemukan!");
             runApp();
         }
+
+         // ============================
     }
 
     private static void showRegisterMenu() {
@@ -124,10 +157,10 @@ public class Main {
             runApp();
             return;
         }
-
+// =========
         User user = new User(username, password);
         Profile profile = new Profile();
-
+//=========
         System.out.println("Nama Lengkap");
         System.out.print("> ");
         String fullName = sc.nextLine();
@@ -164,7 +197,7 @@ public class Main {
 
         runApp();
     }
-
+ // ============================
     private static void showDetailUser(Profile profile) {
         System.out.println("-------------------------");
         System.out.println("Profil Pengguna");
@@ -173,5 +206,12 @@ public class Main {
         System.out.println("Nickname     : " + profile.getNickName());
         System.out.println("Umur         : " + profile.getAge());
         System.out.println("Hobby        : " + profile.getHobby());
+
+        if (!profile.getPeripherals().isEmpty()) {
+            System.out.println("Peripheral    : ");
+            for (Peripheral p : profile.getPeripherals()) {
+                System.out.println(" - " + p.getDeviceName());
+            }
+        }
     }
 }

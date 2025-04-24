@@ -17,7 +17,7 @@ public class StringUtils {
             return "User";
         }
         String[] parts = fullName.split(" ");
-        return parts[0]; // ambil nama depan
+        return parts[1]; // ambil nama belakang
     }
 
 }

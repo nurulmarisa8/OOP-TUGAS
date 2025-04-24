@@ -1,5 +1,8 @@
 package login_app.models;
 
+import java.util.ArrayList;
+
+
 public class Profile {
     /*
      * 
@@ -12,6 +15,16 @@ public class Profile {
     private String hobby;
     private String nickName;
 
+    private ArrayList<Peripheral> peripherals = new ArrayList<>();
+
+    public void addPeripheral(Peripheral p) {
+        peripherals.add(p);
+    }
+    
+    public ArrayList<Peripheral> getPeripherals() {
+        return peripherals;
+    }
+    
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
