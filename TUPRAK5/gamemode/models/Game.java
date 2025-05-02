@@ -1,4 +1,4 @@
-package TUPRAK5.gamemode.models;
+package gamemode.models;
 
 import java.util.Scanner;
 
@@ -48,7 +48,7 @@ public class Game {
 
     private void menuInteraksi() {
         while (true) {
-            System.out.println("\nMenu:");
+            System.out.println("\\nMenu:");
             System.out.println("1. Serang");
             System.out.println("2. Keluar");
             System.out.print("Masukkan pilihan (1-2): ");

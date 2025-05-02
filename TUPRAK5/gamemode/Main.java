@@ -1,6 +1,6 @@
-package TUPRAK5.gamemode;
+package gamemode;
 
-import TUPRAK5.gamemode.models.Game;
+import gamemode.models.Game;
 
 public class Main {
     public static void main(String[] args) {
