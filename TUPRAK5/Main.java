@@ -1,11 +1,10 @@
 package TUPRAK5;
 
-import TUPRAK5.models.Hero;
+import TUPRAK5.models.Game;
 
 public class Main {
     public static void main(String[] args) {
-        Hero hero1 = new Hero("Archer",10,100);
-
-        hero1.display();
+        Game game = new Game();
+        game.start();
     }
 }

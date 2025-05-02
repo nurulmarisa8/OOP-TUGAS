@@ -1,20 +1,39 @@
 package TUPRAK5.models;
 
 public class Hero {
-    String name;
-    double attackPower, health;
+    protected String name;
+    protected int health;
+    protected int attackPower;
 
-
-    public Hero(String nameInput, double attackInput, double healthInput){
-        this.name = nameInput;
-        this.attackPower = attackInput;
-        this.health = healthInput;
+    public Hero(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
     }
 
-    public void display(){
-        System.out.println("\nName: " + this.name);
-        System.out.println("Health: " + this.health);
-        System.out.println("Power: " + this.attackPower);
+    public void attack() {
+        System.out.println(name + " menyerang dengan kekuatan " + attackPower + "!");
     }
-    
+}
+
+class Archer extends Hero {
+    public Archer(String name) {
+        super(name, 100, 15);
+    }
+}
+
+class Wizard extends Hero {
+    public Wizard(String name) {
+        super(name, 80, 20);
+    }
+}
+
+class Fighter extends Hero {
+    public Fighter(String name) {
+        this(name, 120, 10);
+    }
+
+    public Fighter(String name, int health, int attackPower) {
+        super(name, health, attackPower);
+    }
 }
