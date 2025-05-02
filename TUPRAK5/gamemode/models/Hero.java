@@ -1,4 +1,4 @@
-package TUPRAK5.models;
+package TUPRAK5.gamemode.models;
 
 public class Hero {
     protected String name;
