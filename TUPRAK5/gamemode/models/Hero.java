@@ -17,23 +17,25 @@ public class Hero {
 }
 
 class Archer extends Hero {
-    public Archer(String name) {
-        super(name, 100, 15);
+    public Archer(String name, int health, int attackPower) {
+        super(name, health, attackPower);
     }
 }
 
 class Wizard extends Hero {
-    public Wizard(String name) {
-        super(name, 80, 20);
+    public Wizard(String name, int health, int attackPower) {
+        super(name, health, attackPower);
     }
 }
 
 class Fighter extends Hero {
-    public Fighter(String name) {
-        this(name, 120, 10);
+    public Fighter(String name, int health, int attackPower) {
+        this(name); 
+        this.health = health;
+        this.attackPower = attackPower;
     }
 
-    public Fighter(String name, int health, int attackPower) {
-        super(name, health, attackPower);
+    public Fighter(String name) {
+        super(name, 0, 0); 
     }
 }
