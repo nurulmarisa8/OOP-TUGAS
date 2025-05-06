@@ -1,4 +1,4 @@
-9package appmode.models;
+package appmode.models;
 
 public class Kendaraan {
     protected String id;

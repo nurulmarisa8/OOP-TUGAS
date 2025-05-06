@@ -1,4 +1,4 @@
-package appmode.models;
+package appmode.service;
 
 public class IServiceable {
     
