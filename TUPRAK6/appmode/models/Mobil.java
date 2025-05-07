@@ -39,10 +39,9 @@ public class Mobil {
         this.bahanBakar = bahanbakar;
     }
 
-    
-
-
-
+    public void tampilkanSpesifikasi() {
+        System.out.println("Mobil - Jumlah Pintu: " + jumlahPintu + ", Kapasitas Mesin: " + kapasitasMesin + "L, Jumlah Kursi: " + jumlahKursi + ", Bahan Bakar: " + bahanBakar);
+    }
 
 
 }

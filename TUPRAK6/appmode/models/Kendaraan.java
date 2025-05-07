@@ -31,13 +31,8 @@ public class Kendaraan {
         this.warna = warna;
     }
 
-    
-
-
-
-
-    
-    
-    
+    public String getDetail() {
+        return "ID: " + id + ", Merek: " + merek + ", Model: " + model + ", Tahun: " + tahunProduksi + ", Warna: " + warna;
+    }
     
 }

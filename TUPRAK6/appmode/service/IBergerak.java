@@ -1,5 +1,5 @@
 package appmode.service;
 
-public class IBergerak {
-    
+public interface IBergerak {
+    void bergerak();
 }

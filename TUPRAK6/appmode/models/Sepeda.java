@@ -5,28 +5,31 @@ public class Sepeda {
     protected int jumlahGear;
     protected int ukuranRoda;
 
-    public String getJenisSepeda(){
+    public String getJenisSepeda() {
         return jenisSepeda;
     }
 
-    public void setJenisSepeda(String jenisSepeda){
+    public void setJenisSepeda(String jenisSepeda) {
         this.jenisSepeda = jenisSepeda;
     }
 
-    public int getJumlahGear(){
+    public int getJumlahGear() {
         return jumlahGear;
     }
 
-    public void setJumlahGear(int jumlahGear){
+    public void setJumlahGear(int jumlahGear) {
         this.jumlahGear = jumlahGear;
     }
 
-    public int setUkuranRoda(){
+    public int getUkuranRoda() {
         return ukuranRoda;
     }
 
-    public void getUkuranRoda(int ukuranRoda){
+    public void setUkuranRoda(int ukuranRoda) {
         this.ukuranRoda = ukuranRoda;
     }
-    
+
+    public void tampilkanSpesifikasi() {
+        System.out.println("Sepeda - Jenis: " + jenisSepeda + ", Jumlah Gear: " + jumlahGear + ", Ukuran Roda: " + ukuranRoda + " inci");
+    }
 }
