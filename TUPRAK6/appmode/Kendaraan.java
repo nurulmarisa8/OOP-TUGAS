@@ -14,31 +14,38 @@ public abstract class Kendaraan {
     }
 
     public String getId() { 
-        return id; }
+        return id; 
+    }
 
 
     public String getMerek() { 
-        return merek; }
+        return merek; 
+    }
 
 
     public String getModel() { 
-        return model; }
+        return model; 
+    }
 
 
     public String getWarna() { 
-        return warna; }
+        return warna; 
+    }
 
 
     public int getTahunProduksi() { 
-        return tahunProduksi; }
+        return tahunProduksi; 
+    }
 
 
     public void setWarna(String warna) { 
-        this.warna = warna; }
+        this.warna = warna; 
+    }
 
 
     public void setTahunProduksi(int tahunProduksi) { 
-        this.tahunProduksi = tahunProduksi; }
+        this.tahunProduksi = tahunProduksi; 
+    }
 
 
     public abstract String getTipeKendaraan();
@@ -46,6 +53,6 @@ public abstract class Kendaraan {
     public abstract boolean berhenti();
 
     public abstract double getKecepatan();
-    
+
     public abstract void setKecepatan(double kecepatan);
 }

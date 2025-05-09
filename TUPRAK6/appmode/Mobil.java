@@ -15,13 +15,13 @@ public class Mobil extends Kendaraan implements IServiceable {
     public String getTipeKendaraan() { 
         return "Mobil"; }
 
-
     public boolean berhenti() { 
-        return true; }
-
+        return true; 
+    }
 
     public double getKecepatan() { 
-        return 0.0; }
+        return 0.0; 
+    }
 
     public void setKecepatan(double kecepatan) {
 
@@ -29,16 +29,41 @@ public class Mobil extends Kendaraan implements IServiceable {
 
     public boolean periksaKondisi() { 
         return true; }
-        
-    public void lakukanServis() {}
-    public Date getWaktuServisTerakhir() { return new Date(); }
-    public void setWaktuServis(Date waktu) {}
-    public double hitungBiayaServis() { return 0.0; }
 
-    public int getJumlahPintu() { return jumlahPintu; }
-    public void setJumlahPintu(int jumlahPintu) { this.jumlahPintu = jumlahPintu; }
-    public double getKapasitasMesin() { return kapasitasMesin; }
-    public void setKapasitasMesin(double kapasitasMesin) { this.kapasitasMesin = kapasitasMesin; }
-    public String getBahanBakar() { return bahanBakar; }
-    public void setBahanBakar(String bahanBakar) { this.bahanBakar = bahanBakar; }
+    public void lakukanServis() {
+
+    }
+    public Date getWaktuServisTerakhir() { 
+        return new Date(); 
+    }
+
+    public void setWaktuServis(Date waktu) {}
+    public double hitungBiayaServis() { 
+        return 0.0; 
+    }
+
+
+    public int getJumlahPintu() { 
+        return jumlahPintu; 
+    }
+
+    public void setJumlahPintu(int jumlahPintu) { 
+        this.jumlahPintu = jumlahPintu; 
+    }
+
+    public double getKapasitasMesin() { 
+        return kapasitasMesin; 
+    }
+
+    public void setKapasitasMesin(double kapasitasMesin) { 
+        this.kapasitasMesin = kapasitasMesin; 
+    }
+
+    public String getBahanBakar() { 
+        return bahanBakar; 
+    }
+
+    public void setBahanBakar(String bahanBakar) { 
+        this.bahanBakar = bahanBakar; 
+    }
 }

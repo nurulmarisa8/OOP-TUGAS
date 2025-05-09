@@ -1,0 +1,60 @@
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of all classes
+        Kendaraan mobil = new Mobil("M001", "Toyota", "Camry", "Silver", 2020, 4, 2.5, 5, "Bensin");
+        Kendaraan motor = new Motor("M002", "Honda", "PCX", "Black", 2021, "Matic", 8.0);
+        Kendaraan sepeda = new Sepeda("S001", "United", "Bike", "Red", 2019, "Mountain", 21);
+        Kendaraan truk = new Truk("T001", "Isuzu", "Elf", "White", 2018, 2, 5.0, 3, "Diesel");
+
+        // Print details for Mobil
+        System.out.println("=== Mobil Details ===");
+        System.out.println("Tipe: " + mobil.getTipeKendaraan());
+        System.out.println("ID: " + mobil.getId());
+        System.out.println("Merek: " + mobil.getMerek());
+        System.out.println("Model: " + mobil.getModel());
+        System.out.println("Warna: " + mobil.getWarna());
+        System.out.println("Tahun Produksi: " + mobil.getTahunProduksi());
+        System.out.println("Jumlah Pintu: " + ((Mobil) mobil).getJumlahPintu());
+        System.out.println("Kapasitas Mesin: " + ((Mobil) mobil).getKapasitasMesin() + "L");
+        System.out.println("Jumlah Kursi: " + ((Mobil) mobil).getJumlahKursi());
+        System.out.println("Bahan Bakar: " + ((Mobil) mobil).getBahanBakar());
+        System.out.println();
+
+        // Print details for Motor
+        System.out.println("=== Motor Details ===");
+        System.out.println("Tipe: " + motor.getTipeKendaraan());
+        System.out.println("ID: " + motor.getId());
+        System.out.println("Merek: " + motor.getMerek());
+        System.out.println("Model: " + motor.getModel());
+        System.out.println("Warna: " + motor.getWarna());
+        System.out.println("Tahun Produksi: " + motor.getTahunProduksi());
+        System.out.println("Jenis Motor: " + ((Motor) motor).getJenisMotor());
+        System.out.println("Kapasitas Tangki: " + ((Motor) motor).getKapasitasTangki() + "L");
+        System.out.println();
+
+        // Print details for Sepeda
+        System.out.println("=== Sepeda Details ===");
+        System.out.println("Tipe: " + sepeda.getTipeKendaraan());
+        System.out.println("ID: " + sepeda.getId());
+        System.out.println("Merek: " + sepeda.getMerek());
+        System.out.println("Model: " + sepeda.getModel());
+        System.out.println("Warna: " + sepeda.getWarna());
+        System.out.println("Tahun Produksi: " + sepeda.getTahunProduksi());
+        System.out.println("Jenis Sepeda: " + ((Sepeda) sepeda).getJenisSepeda());
+        System.out.println("Jumlah Gear: " + ((Sepeda) sepeda).getJumlahGear());
+        System.out.println();
+
+        // Print details for Truk
+        System.out.println("=== Truk Details ===");
+        System.out.println("Tipe: " + truk.getTipeKendaraan());
+        System.out.println("ID: " + truk.getId());
+        System.out.println("Merek: " + truk.getMerek());
+        System.out.println("Model: " + truk.getModel());
+        System.out.println("Warna: " + truk.getWarna());
+        System.out.println("Tahun Produksi: " + truk.getTahunProduksi());
+        System.out.println("Jumlah Pintu: " + ((Truk) truk).getJumlahPintu());
+        System.out.println("Kapasitas Mesin: " + ((Truk) truk).getKapasitasMesin() + "L");
+        System.out.println("Jumlah Kursi: " + ((Truk) truk).getJumlahKursi());
+        System.out.println("Bahan Bakar: " + ((Truk) truk).getBahanBakar());
+    }
+}
