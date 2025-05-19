@@ -42,7 +42,7 @@ class Typer extends Thread {
 
         // TODO (1)
         // Buatlah variable howLongToType yang memuat waktu yang diperlukan typer
-        // Waktu per kata (ms) = (60 / wpm) * 1000
+        // Waktu per kata (ms) = (60 detik / wpm) * 1000
         long howLongToType = (long) ((60.0 / wpm) * 1000);
 
         // TODO (2)
@@ -53,8 +53,7 @@ class Typer extends Thread {
             try {
                 Thread.sleep(howLongToType);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                break;
+                e.printStackTrace();
             }
             this.addWordsTyped(word);
         }
@@ -64,7 +63,8 @@ class Typer extends Thread {
         // TODO (3)
         // Tambahkan typer yang telah selesai mengetik semua kata ke list typeRaceTabel 
         // yang ada di class typeRacer. 
-        long finishTime = (System.currentTimeMillis() - startTime) / 1000;
-        typeRacer.addResult(new Result(this.botName, (int) finishTime));
+        long finishTime = System.currentTimeMillis();
+        long timeTaken = finishTime - startTime;
+        typeRacer.addResult(new Result(this, timeTaken));
     }
 }

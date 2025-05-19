@@ -1,27 +1,19 @@
 package TypeRacer;
 
-class Result {
-    private String name;
-    private int finishTime;
+public class Result {
+    private Typer typer;
+    private long timeTaken; // in ms
 
-    public Result(String name, int finishTime) {
-        this.name = name;
-        this.finishTime = finishTime;
+    public Result(Typer typer, long timeTaken) {
+        this.typer = typer;
+        this.timeTaken = timeTaken;
     }
 
-    public String getName() {
-        return name;
+    public Typer getTyper() {
+        return typer;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(int finishTime) {
-        this.finishTime = finishTime;
+    public long getTimeTaken() {
+        return timeTaken;
     }
 }

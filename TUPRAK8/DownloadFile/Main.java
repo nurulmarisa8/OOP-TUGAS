@@ -11,7 +11,13 @@ public class Main {
     static volatile boolean allDone = false;
     static ArrayList<Result> results = new ArrayList<>();
 
-    // (1) Mencatat hasil download secara thread-safe
+    // (1)
+    // Lengkapi method untuk merekam hasil download file sesuai dengan poin-poin berikut:
+    // - Setiap kali method dipanggil, total file yang selesai didownload akan bertambah
+    // - Tentukan status download berdasarkan durasi proses download
+    // (durasi ≤ 2 detik maka "Success", selain itu "Timeout")
+    // - Jika status "Success", file yang berhasil didownload akan bertambah
+    // - Buat objek Result dan tambahkan ke list results untuk menyimpan hasil setiap proses
     public static synchronized void recordResult(int fileId, int duration, String threadName) {
         completedDownloads++;
         String status = duration <= 2 ? "Success" : "Timeout";
@@ -23,12 +29,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // (2) Input jumlah file
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Masukkan jumlah file yang akan di-download: ");
-        totalFiles = scanner.nextInt();
-
+        try (// (2) Input jumlah file
+                // Gunakan Scanner untuk meminta input jumlah file yang akan diunduh dari pengguna
+        Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Masukkan jumlah file yang akan di-download: ");
+            totalFiles = scanner.nextInt();
+        }
         // (3) Executor untuk download dan UI
+        // Siapkan dua executor service dengan fungsi sebagai berikut:
+        // - Satu dengan 3 thread untuk menangani proses download secara paralel (downloadExecutor)
+        // - Satu lagi dengan 1 thread untuk menampilkan proses download ke terminal (uiExecutor)
         ExecutorService downloadExecutor = Executors.newFixedThreadPool(3);
         ExecutorService uiExecutor = Executors.newSingleThreadExecutor();
 
@@ -36,6 +46,10 @@ public class Main {
         long startTime = System.currentTimeMillis();
 
         // (4) Tampilkan progress setiap detik
+        // Buat tugas yang dijalankan oleh uiExecutor untuk menampilkan proses download:
+        // - Tampilkan pesan ke terminal setiap detik sebagai indikator progres,
+        // dengan format -> Downloading files... ({time}s)
+        // - Hentikan ketika semua file selesai diunduh
         uiExecutor.submit(() -> {
             int time = 0;
             while (!allDone) {
@@ -51,6 +65,9 @@ public class Main {
         });
 
         // (5) Submit task download ke thread pool
+        // Buat dan jalankan tugas download untuk setiap file menggunakan downloadExecutor:
+        // - Simulasikan proses download dengan jeda waktu acak (random 1-3 detik)
+        // - Setelah selesai, catat hasilnya dengan menyimpan fileId, duration, dan threadname
         for (int i = 1; i <= totalFiles; i++) {
             final int fileId = i;
             downloadExecutor.submit(() -> {
@@ -65,9 +82,11 @@ public class Main {
         }
 
         // (6) Shutdown executor download
+        // Tutup downloadExecutor agar tidak menerima tugas baru
         downloadExecutor.shutdown();
 
         // (7) Tunggu semua download selesai
+        // Tunggu semua tugas download selesai sebelum lanjut ke proses berikutnya   
         try {
             downloadExecutor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         } catch (InterruptedException e) {
@@ -75,6 +94,11 @@ public class Main {
         }
 
         // (8) Sinyal ke UI bahwa semua selesai, lalu shutdown UI executor
+        // Ketika semua proses download sudah selesai:
+        // - Tandai bahwa semua download sudah selesai dengan mengubah nilai allDone
+        // - Hentikan proses uiExecutor dan tunggu hingga semua tugas selesai,
+        // seperti pada downloadExecutor
+
         allDone = true;
         uiExecutor.shutdown();
         try {
