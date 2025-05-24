@@ -1,16 +1,14 @@
-package app;
+package socialmedia;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import app.scene.RegisterScene;
+import socialmedia.view.RegisterScene;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         RegisterScene registerScene = new RegisterScene(primaryStage);
-        primaryStage.setTitle("Social Media App");
-        primaryStage.setScene(registerScene.getScene());
-        primaryStage.show();
+        registerScene.show();
     }
 
     public static void main(String[] args) {
