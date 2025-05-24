@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -27,26 +28,38 @@ public class HomeScene {
 
     public HomeScene(Stage stage, User user) {
         this.stage = stage;
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10));
-        layout.setAlignment(Pos.TOP_CENTER);
+        VBox layout = new VBox(20);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.TOP_LEFT);
 
+        // Foto profil
         ImageView profileImage = new ImageView(new Image(user.getProfileImagePath()));
         profileImage.setFitWidth(120);
         profileImage.setFitHeight(120);
         profileImage.setClip(new Circle(60, 60, 60));
 
+        // Nama dan tombol
         Label nickLabel = new Label(user.getNickName());
+        nickLabel.setStyle("-fx-font-size: 22px; -fx-font-weight: bold;");
         Label fullLabel = new Label(user.getFullName());
-
-        VBox userBox = new VBox(5, profileImage, nickLabel, fullLabel);
-        userBox.setAlignment(Pos.CENTER);
+        fullLabel.setStyle("-fx-font-size: 16px;");
 
         Button addPostButton = new Button("Add Post");
         addPostButton.setOnAction(e -> new UploadPostWindow(this).show());
 
-        layout.getChildren().addAll(userBox, addPostButton, postsPane);
-        scene = new Scene(layout, 600, 700);
+        VBox infoBox = new VBox(8, nickLabel, fullLabel, addPostButton);
+        infoBox.setAlignment(Pos.TOP_LEFT);
+
+        // Baris profil (foto kiri, info kanan)
+        HBox userRow = new HBox(20, profileImage, infoBox);
+        userRow.setAlignment(Pos.TOP_LEFT);
+
+        // Tambahkan garis pemisah
+        Separator separator = new Separator();
+        separator.setPadding(new Insets(20, 0, 10, 0));
+
+        layout.getChildren().addAll(userRow, separator, postsPane);
+        scene = new Scene(layout, 800, 700);
     }
 
     public void addPost(Post post) {
@@ -54,30 +67,36 @@ public class HomeScene {
 
         ImageView postImage = new ImageView(new Image(post.getPostImagePath()));
         postImage.setFitWidth(200);
-        postImage.setFitHeight(120);
+        postImage.setFitHeight(200);
+        postImage.setPreserveRatio(false); // <-- Biar semua gambar selalu kotak 1:1
 
-        // Membuat sudut gambar membulat
-        Rectangle clip = new Rectangle(200, 120);
-        clip.setArcWidth(24);   // Besar radius sudut, bisa diubah sesuai selera
-        clip.setArcHeight(24);
+        Rectangle clip = new Rectangle(200, 200);
+        clip.setArcWidth(20);
+        clip.setArcHeight(20);
         postImage.setClip(clip);
 
         Label caption = new Label(post.getCaption());
         caption.setStyle(
             "-fx-background-color: rgba(0,0,0,0.5);" +
             "-fx-text-fill: white;" +
-            "-fx-font-size: 20px;" +         // Ukuran font lebih kecil
+            "-fx-font-size: 18px;" +      // Font lebih proporsional
             "-fx-font-weight: bold;" +
-            "-fx-padding: 0;"                // Tidak ada padding
+            "-fx-padding: 0;"
         );
         caption.setMaxWidth(Double.MAX_VALUE);
         caption.setMaxHeight(Double.MAX_VALUE);
         caption.setWrapText(true);
         caption.setOpacity(0);
-        caption.setMouseTransparent(false);
+        caption.setMouseTransparent(true);
         caption.setAlignment(Pos.CENTER);
 
         StackPane postContainer = new StackPane(postImage, caption);
+        postContainer.setMinWidth(200);
+        postContainer.setMinHeight(200);
+        postContainer.setPrefWidth(200);
+        postContainer.setPrefHeight(200);
+        postContainer.setMaxWidth(200);
+        postContainer.setMaxHeight(200);
         postContainer.setAlignment(Pos.CENTER);
         StackPane.setAlignment(caption, Pos.CENTER);
 
@@ -89,15 +108,16 @@ public class HomeScene {
         fadeOut.setFromValue(1);
         fadeOut.setToValue(0);
 
+        // Efek zoom dan fade pada postContainer, bukan postImage saja
         postContainer.setOnMouseEntered(e -> {
             fadeIn.playFromStart();
-            postImage.setScaleX(1.05);
-            postImage.setScaleY(1.05);
+            postContainer.setScaleX(1.05);
+            postContainer.setScaleY(1.05);
         });
         postContainer.setOnMouseExited(e -> {
             fadeOut.playFromStart();
-            postImage.setScaleX(1.0);
-            postImage.setScaleY(1.0);
+            postContainer.setScaleX(1.0);
+            postContainer.setScaleY(1.0);
         });
 
         caption.setOnMouseClicked(e -> System.out.println("Caption clicked: " + post.getCaption()));
@@ -106,8 +126,8 @@ public class HomeScene {
             Stage imageStage = new Stage();
             ImageView fullImage = new ImageView(new Image(post.getPostImagePath()));
             fullImage.setPreserveRatio(true);
-            fullImage.setFitWidth(600); // Atur sesuai kebutuhan
-            fullImage.setFitHeight(700);
+            fullImage.setFitWidth(700); // Atur sesuai kebutuhan
+            fullImage.setFitHeight(800);
 
             StackPane pane = new StackPane(fullImage);
             pane.setStyle("-fx-background-color: #333333;"); // warna gelap agar fokus ke foto
